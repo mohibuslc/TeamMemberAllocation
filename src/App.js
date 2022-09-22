@@ -2,12 +2,15 @@ import Content from "./Components/Content";
 import Employee from "./Components/Employee";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
+import NotFind from "./Components/NotFind";
 import{useState , useEffect} from 'react';
+import Nav from "./Components/Nav";
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
+
 
 
 
@@ -128,17 +131,17 @@ useEffect(()=>{
 
 
   return (
-    <div >      
-      <BrowserRouter>
-      
 
-        
+    
+    <div >      
+
       
+      <BrowserRouter>    
+      <Nav/>
       
       <Header selectTeam={selectTeam} 
-
-
     teamcount ={employees.filter((employee) => employee.teamName === selectTeam).length}/>
+
     <Routes>
     <Route  path ="/" element={<Employee employees={employees}
                 selectTeam ={selectTeam}
@@ -146,11 +149,12 @@ useEffect(()=>{
                 handleEmployeeCardClick={handleEmployeeCardClick} />} />
       <Route>
     <Route path ="content" element={<Content />}/>
+    <Route path ="*" element ={<NotFind />} />
     </Route>
     
 
 </Routes>
-      ls
+      
       
       <Footer />
       </BrowserRouter>
